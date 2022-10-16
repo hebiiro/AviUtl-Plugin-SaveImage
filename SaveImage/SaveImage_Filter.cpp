@@ -84,7 +84,7 @@ int check_def[] = { -1, -1, -1, -1 };
 EXTERN_C AviUtl::FilterPluginDLL* CALLBACK GetFilterTable()
 {
 	LPCSTR name = "画像保存";
-	LPCSTR information = "画像保存 1.0.0 by 蛇色";
+	LPCSTR information = "画像保存 1.1.0 by 蛇色";
 
 	static AviUtl::FilterPluginDLL filter =
 	{

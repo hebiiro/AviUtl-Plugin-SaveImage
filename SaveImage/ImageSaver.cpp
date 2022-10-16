@@ -81,7 +81,7 @@ BOOL ImageSaver::main()
 	if (!m_fp->exfunc->is_editing(m_editp)) return FALSE;
 
 	char fileName[MAX_PATH] = {};
-	if (!m_fp->exfunc->dlg_get_save_name(fileName, "BMP / JPG / GIF / TIFF / PNG File\0*.bmp;*.jpg;*.gif;*.tiff;*.png\0All File (*.*)\0*.*\0", 0))
+	if (!m_fp->exfunc->dlg_get_save_name(fileName, "PNG / BMP / JPG / GIF / TIFF File\0*.png;*.bmp;*.jpg;*.gif;*.tiff\0All File (*.*)\0*.*\0", 0))
 		return FALSE;
 
 	LPCSTR extension = ::PathFindExtensionA(fileName);
