@@ -1,6 +1,6 @@
 ﻿# AviUtl プラグイン - 画像保存
 
-現在のフレーム、または選択アイテムを画像として保存します。
+現在のフレーム、または選択アイテムを画像として保存します。<br>
 [最新バージョンをダウンロード](../../releases/latest/)
 
 ## 導入方法
@@ -23,13 +23,14 @@
 
 ## 更新履歴
 
+* 1.2.0 - 2023/07/29 映像の幅が4の倍数でないときの問題を修正
 * 1.1.0 - 2022/10/16 拡張子を省略した場合 PNG になるように変更
 * 1.0.0 - 2022/10/13 初版
 
 ## 動作確認
 
 * (必須) AviUtl 1.10 & 拡張編集 0.92 http://spring-fragrance.mints.ne.jp/aviutl/
-* (共存確認) patch.aul r42 https://scrapbox.io/ePi5131/patch.aul
+* (共存確認) patch.aul r43 謎さうなフォーク版29 https://scrapbox.io/nazosauna/patch.aul
 
 ## クレジット
 

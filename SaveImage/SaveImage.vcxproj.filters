@@ -2,13 +2,10 @@
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
     <ClInclude Include="pch.h" />
-    <ClInclude Include="SaveImage.h" />
-    <ClInclude Include="ImageSaver.h" />
+    <ClInclude Include="App.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="pch.cpp" />
-    <ClCompile Include="SaveImage.cpp" />
-    <ClCompile Include="SaveImage_Filter.cpp" />
-    <ClCompile Include="ImageSaver.cpp" />
+    <ClCompile Include="Filter.cpp" />
   </ItemGroup>
 </Project>

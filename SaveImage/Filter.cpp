@@ -1,21 +1,17 @@
 ﻿#include "pch.h"
-#include "SaveImage.h"
+#include "App.h"
 
-//--------------------------------------------------------------------
+// デバッグ用コールバック関数。デバッグメッセージを出力する。
+void ___outputLog(LPCTSTR text, LPCTSTR output)
+{
+	::OutputDebugString(output);
+}
 
 BOOL func_init(AviUtl::FilterPlugin* fp)
 {
 	MY_TRACE(_T("func_init()\n"));
 
-	g_auin.initExEditAddress();
-	g_exedit = g_auin.GetFilter(fp, "拡張編集");
-
-	fp->exfunc->add_menu_item(fp, "現在フレーム画像を保存", fp->hwnd, Check::SaveFrameRGB, 0, AviUtl::ExFunc::AddMenuItemFlag::None);
-	fp->exfunc->add_menu_item(fp, "現在フレーム画像をアルファ付きで保存", fp->hwnd, Check::SaveFrameRGBA, 0, AviUtl::ExFunc::AddMenuItemFlag::None);
-	fp->exfunc->add_menu_item(fp, "選択アイテム画像を保存", fp->hwnd, Check::SaveItemRGB, 0, AviUtl::ExFunc::AddMenuItemFlag::None);
-	fp->exfunc->add_menu_item(fp, "選択アイテム画像をアルファ付きで保存", fp->hwnd, Check::SaveItemRGBA, 0, AviUtl::ExFunc::AddMenuItemFlag::None);
-
-	return TRUE;
+	return app.onInit(fp);
 }
 
 BOOL func_exit(AviUtl::FilterPlugin* fp)
@@ -49,18 +45,16 @@ BOOL func_WndProc(HWND hwnd, UINT message, WPARAM wParam, LPARAM lParam, AviUtl:
 
 			if (wParam == 0 && lParam == 0) return TRUE;
 
-			return onCommand(LOWORD(wParam), editp, fp);
+			return app.onCommand(LOWORD(wParam), editp, fp);
 		}
 	case WM_COMMAND:
 		{
-			return onCommand(LOWORD(wParam) - fp->MidFilterButton, editp, fp);
+			return app.onCommand(LOWORD(wParam) - fp->MidFilterButton, editp, fp);
 		}
 	}
 
 	return FALSE;
 }
-
-//--------------------------------------------------------------------
 
 LPCSTR track_name[] =
 {
@@ -84,7 +78,7 @@ int check_def[] = { -1, -1, -1, -1 };
 EXTERN_C AviUtl::FilterPluginDLL* CALLBACK GetFilterTable()
 {
 	LPCSTR name = "画像保存";
-	LPCSTR information = "画像保存 1.1.0 by 蛇色";
+	LPCSTR information = "画像保存 1.2.0 by 蛇色";
 
 	static AviUtl::FilterPluginDLL filter =
 	{
@@ -109,5 +103,3 @@ EXTERN_C AviUtl::FilterPluginDLL* CALLBACK GetFilterTable()
 
 	return &filter;
 }
-
-//--------------------------------------------------------------------
